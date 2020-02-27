@@ -20,7 +20,7 @@ func NewDeleteAgencyRequest(ID int) *DeleteAgencyRequest {
 
 // URL return API request entrypoint (URI)
 func (dar *DeleteAgencyRequest) URL() string {
-	return fmt.Sprintf("%s%v", v1Agencies, dar.ID)
+	return fmt.Sprintf("/v1/agencies/%v", dar.ID)
 }
 
 // Method return API request http method

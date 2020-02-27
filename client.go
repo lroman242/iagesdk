@@ -63,7 +63,6 @@ func (c Client) SendRequest(r Request, resp interface{}) error {
 	defer func() {
 		err = response.Body.Close()
 		if err != nil {
-			//TODO: log
 			log.Print(err)
 		}
 	}()

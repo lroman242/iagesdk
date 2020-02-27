@@ -30,7 +30,7 @@ func NewCreateAgencyRequest(agency *Agency) *CreateAgencyRequest {
 
 // URL return API request entrypoint (URI)
 func (car *CreateAgencyRequest) URL() string {
-	return v1Agencies
+	return `/v1/agencies/`
 }
 
 // Method return API request http method
@@ -43,7 +43,6 @@ func (car *CreateAgencyRequest) Body() io.Reader {
 	body := new(bytes.Buffer)
 	err := json.NewEncoder(body).Encode(car)
 	if err != nil {
-		//TODO: log
 		log.Print(err)
 		return nil
 	}

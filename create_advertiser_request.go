@@ -40,7 +40,6 @@ func NewCreateAdvertiserRequest(adv *Advertiser, password string) *CreateAdverti
 
 // URL return API request entrypoint (URI)
 func (car *CreateAdvertiserRequest) URL() string {
-	//TODO:
 	return `/v1/advertisers/`
 }
 
@@ -54,7 +53,6 @@ func (car *CreateAdvertiserRequest) Body() io.Reader {
 	body := new(bytes.Buffer)
 	err := json.NewEncoder(body).Encode(car)
 	if err != nil {
-		//TODO: log
 		log.Print(err)
 		return nil
 	}

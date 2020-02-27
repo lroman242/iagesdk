@@ -33,7 +33,7 @@ func NewUpdateAgencyRequest(agency *Agency) *UpdateAgencyRequest {
 
 // URL return API request entrypoint (URI)
 func (uar *UpdateAgencyRequest) URL() string {
-	return fmt.Sprintf("%s%v", v1Agencies, uar.ID)
+	return fmt.Sprintf("/v1/agencies/%v", uar.ID)
 }
 
 // Method return API request http method
@@ -46,7 +46,6 @@ func (uar *UpdateAgencyRequest) Body() io.Reader {
 	body := new(bytes.Buffer)
 	err := json.NewEncoder(body).Encode(uar)
 	if err != nil {
-		//TODO: log
 		log.Print(err)
 		return nil
 	}

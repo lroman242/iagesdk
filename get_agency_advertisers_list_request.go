@@ -8,7 +8,7 @@ import (
 	"strconv"
 )
 
-// GetAdvertisersListRequest describe API request to iAGE platform to fetch list of advertisers
+// GetAgencyAdvertisersListRequest describe API request to iAGE platform to fetch list of advertisers related to the Agency
 type GetAgencyAdvertisersListRequest struct {
 	AgencyID int `json:"-"`
 	Page     int `json:"-"`

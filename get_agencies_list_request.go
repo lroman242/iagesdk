@@ -10,8 +10,8 @@ import (
 
 // GetAgenciesListRequest describe API request to iAGE platform to fetch list of agencies
 type GetAgenciesListRequest struct {
-	Page int
-	Size int
+	Page int `json:"-"`
+	Size int `json:"-"`
 }
 
 // NewGetAgenciesListRequest initialize GetAgenciesListRequest
@@ -25,7 +25,7 @@ func NewGetAgenciesListRequest(page int, size int) *GetAgenciesListRequest {
 
 // URL return API request entrypoint (URI)
 func (r *GetAgenciesListRequest) URL() string {
-	uri := v1Agencies
+	uri := `/v1/agencies/`
 
 	u := url.URL{}
 	if r.Page > 0 {

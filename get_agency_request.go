@@ -20,7 +20,7 @@ func NewGetAgencyRequest(ID int) *GetAgencyRequest {
 
 // URL return API request entrypoint (URI)
 func (gar *GetAgencyRequest) URL() string {
-	return fmt.Sprintf("%s%v", v1Agencies, gar.ID)
+	return fmt.Sprintf(`/v1/agencies/%v`, gar.ID)
 }
 
 // Method return API request http method

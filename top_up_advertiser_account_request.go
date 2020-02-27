@@ -38,7 +38,6 @@ func (tuaar *TopUpAdvertiserAccountRequest) Body() io.Reader {
 	body := new(bytes.Buffer)
 	err := json.NewEncoder(body).Encode(tuaar)
 	if err != nil {
-		//TODO: log
 		log.Print(err)
 		return nil
 	}

@@ -36,7 +36,6 @@ func NewCreateAgencyAdvertiserRequest(agencyID int, adv *Advertiser, password st
 
 // URL return API request entrypoint (URI)
 func (caar *CreateAgencyAdvertiserRequest) URL() string {
-	//TODO:
 	return fmt.Sprintf(`/v1/agencies/%v/advertisers/`, caar.AgencyID)
 }
 
@@ -50,7 +49,6 @@ func (caar *CreateAgencyAdvertiserRequest) Body() io.Reader {
 	body := new(bytes.Buffer)
 	err := json.NewEncoder(body).Encode(caar)
 	if err != nil {
-		//TODO: log
 		log.Print(err)
 		return nil
 	}

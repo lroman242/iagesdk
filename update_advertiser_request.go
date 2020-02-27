@@ -43,7 +43,6 @@ func NewUpdateAdvertiserRequest(adv *Advertiser, password string) *UpdateAdverti
 
 // URL return API request entrypoint (URI)
 func (uar *UpdateAdvertiserRequest) URL() string {
-	//TODO:
 	return fmt.Sprintf(`/v1/advertisers/%v`, uar.ID)
 }
 
@@ -57,7 +56,6 @@ func (uar *UpdateAdvertiserRequest) Body() io.Reader {
 	body := new(bytes.Buffer)
 	err := json.NewEncoder(body).Encode(uar)
 	if err != nil {
-		//TODO: log
 		log.Print(err)
 		return nil
 	}
