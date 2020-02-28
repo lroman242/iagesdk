@@ -26,18 +26,18 @@ func NewGetCampaignLineItemsListRequest(campaignID, page, size int) *GetCampaign
 }
 
 // URL return API request entrypoint (URI)
-func (gclr *GetCampaignLineItemsListRequest) URL() string {
+func (gclilr *GetCampaignLineItemsListRequest) URL() string {
 	uri := `/v1/campaigns/%v/lineitems/`
 
 	u := url.URL{}
-	if gclr.Page > 0 {
-		u.Query().Add("page", strconv.Itoa(gclr.Page))
+	if gclilr.Page > 0 {
+		u.Query().Add("page", strconv.Itoa(gclilr.Page))
 	}
-	if gclr.Size > 0 {
-		u.Query().Add("size", strconv.Itoa(gclr.Size))
+	if gclilr.Size > 0 {
+		u.Query().Add("size", strconv.Itoa(gclilr.Size))
 	}
 
-	if gclr.Page > 0 || gclr.Size > 0 {
+	if gclilr.Page > 0 || gclilr.Size > 0 {
 		return fmt.Sprintf("%s?%s", uri, u.Query().Encode())
 	}
 
@@ -45,11 +45,11 @@ func (gclr *GetCampaignLineItemsListRequest) URL() string {
 }
 
 // Method return API request http method
-func (gclr *GetCampaignLineItemsListRequest) Method() string {
+func (gclilr *GetCampaignLineItemsListRequest) Method() string {
 	return http.MethodGet
 }
 
 // Body generate body content of API request
-func (gclr *GetCampaignLineItemsListRequest) Body() io.Reader {
+func (gclilr *GetCampaignLineItemsListRequest) Body() io.Reader {
 	return nil
 }

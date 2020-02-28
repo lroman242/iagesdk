@@ -11,7 +11,7 @@ type DeleteCampaignRequest struct {
 	ID int //required
 }
 
-// NewDeleteCampaignRequest initialize DeleteCampaignRequest based on Agency ID
+// NewDeleteCampaignRequest initialize DeleteCampaignRequest based on Campaign ID
 func NewDeleteCampaignRequest(ID int) *DeleteCampaignRequest {
 	return &DeleteCampaignRequest{
 		ID: ID,

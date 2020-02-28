@@ -8,24 +8,24 @@ import (
 	"strconv"
 )
 
-// GetLineItemsListRequest describe API request to iAGE platform to fetch list of line items
-type GetLineItemsListRequest struct {
+// GetSSPsListRequest describe API request to iAGE platform to fetch list of SSPs
+type GetSSPsListRequest struct {
 	Page int `json:"-"`
 	Size int `json:"-"`
 }
 
-// NewGetLineItemsListRequest initialize GetLineItemsListRequest
+// NewGetSSPsListRequest initialize GetSSPsListRequest
 // with available query params
-func NewGetLineItemsListRequest(page int, size int) *GetLineItemsListRequest {
-	return &GetLineItemsListRequest{
+func NewGetSSPsListRequest(page int, size int) *GetSSPsListRequest {
+	return &GetSSPsListRequest{
 		Page: page,
 		Size: size,
 	}
 }
 
 // URL return API request entrypoint (URI)
-func (glilr *GetLineItemsListRequest) URL() string {
-	uri := `/v1/lineitems/`
+func (glilr *GetSSPsListRequest) URL() string {
+	uri := `/v1/ssps/`
 
 	u := url.URL{}
 	if glilr.Page > 0 {
@@ -43,11 +43,11 @@ func (glilr *GetLineItemsListRequest) URL() string {
 }
 
 // Method return API request http method
-func (glilr *GetLineItemsListRequest) Method() string {
+func (glilr *GetSSPsListRequest) Method() string {
 	return http.MethodGet
 }
 
 // Body generate body content of API request
-func (glilr *GetLineItemsListRequest) Body() io.Reader {
+func (glilr *GetSSPsListRequest) Body() io.Reader {
 	return nil
 }
