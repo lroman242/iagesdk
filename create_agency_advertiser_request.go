@@ -15,7 +15,7 @@ type CreateAgencyAdvertiserRequest struct {
 	AgencyID int `json:"-"` //required
 }
 
-// NewCreateAgencyAdvertiserRequest initialize CreateAgencyAdvertiserRequest based on Advertiser instance and password
+// NewCreateAgencyAdvertiserRequest initialize CreateAgencyAdvertiserRequest based on Advertiser instance, agency ID and password
 func NewCreateAgencyAdvertiserRequest(agencyID int, adv *Advertiser, password string) *CreateAgencyAdvertiserRequest {
 	return &CreateAgencyAdvertiserRequest{
 		AgencyID: agencyID,
