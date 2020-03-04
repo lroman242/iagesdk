@@ -1,7 +1,6 @@
 package iagesdk
 
 import (
-	"net/url"
 	"time"
 )
 

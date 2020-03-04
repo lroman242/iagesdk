@@ -7,7 +7,6 @@ import (
 	"io"
 	"log"
 	"net/http"
-	"net/url"
 )
 
 // CreateBannerHTMLByCodeRequest describe API request to iAGE platform to create new banner by HTML

@@ -7,7 +7,6 @@ import (
 	"io"
 	"log"
 	"net/http"
-	"net/url"
 )
 
 // UpdateBannerHTMLByCodeRequest describe API request to iAGE platform to update banner HTML by code

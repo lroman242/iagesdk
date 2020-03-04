@@ -1,7 +1,5 @@
 package iagesdk
 
-import "net/url"
-
 type BannerByUrlCreative struct {
 	Creative
 	BannerType     int       `json:"bannerType"`

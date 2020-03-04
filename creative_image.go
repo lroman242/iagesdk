@@ -1,7 +1,5 @@
 package iagesdk
 
-import "net/url"
-
 type CreativeImage struct {
 	Creative
 

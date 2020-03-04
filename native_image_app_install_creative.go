@@ -1,7 +1,5 @@
 package iagesdk
 
-import "net/url"
-
 type NativeImageAppInstallCreative struct {
 	Creative
 

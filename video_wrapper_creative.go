@@ -1,7 +1,5 @@
 package iagesdk
 
-import "net/url"
-
 type VideoWrapperCreative struct {
 	Creative
 	BannerType         int                 `json:"bannerType"`
