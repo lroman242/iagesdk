@@ -6,7 +6,7 @@ import (
 	"net/http"
 )
 
-// DisableSSPRequest describe API request to iAGE platform to enable SSP by ID
+// DisableSSPRequest describe API request to iAGE platform to disable SSP by ID
 type DisableSSPRequest struct {
 	ID int //required
 }
