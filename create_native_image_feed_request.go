@@ -28,18 +28,18 @@ type CreateNativeImageFeedRequest struct {
 // NewCreateNativeImageFeedRequest initialize CreateNativeImageFeedRequest
 func NewCreateNativeImageFeedRequest(lineItemID int, templateType int, title string, brand string, description string, domain string, button string, disabled bool, clickURL string, iconURL string, imageURL string, thirdPartyUrls []string) *CreateNativeImageFeedRequest {
 	request := &CreateNativeImageFeedRequest{
-		LineItemID:       lineItemID,
-		TemplateType:     templateType,
-		Disabled:         disabled,
-		ClickURL:         clickURL,
-		Title:            title,
-		Brand:            brand,
-		Description:      description,
-		Domain:           domain,
-		Button:           button,
-		IconURL:          iconURL,
-		ImageURL:         imageURL,
-		ThirdPartyURLs:   thirdPartyUrls,
+		LineItemID:     lineItemID,
+		TemplateType:   templateType,
+		Disabled:       disabled,
+		ClickURL:       clickURL,
+		Title:          title,
+		Brand:          brand,
+		Description:    description,
+		Domain:         domain,
+		Button:         button,
+		IconURL:        iconURL,
+		ImageURL:       imageURL,
+		ThirdPartyURLs: thirdPartyUrls,
 	}
 
 	return request
