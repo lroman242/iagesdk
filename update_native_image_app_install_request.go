@@ -23,29 +23,29 @@ type UpdateNativeImageAppInstallRequest struct {
 	ClickURL       string   `json:"clickUrl"`
 	AppURL         string   `json:"appUrl"`
 	AppStore       string   `json:"appStore"`
-	IconURL        string `json:"iconUrl"`
-	ImageURL       string `json:"imageUrl"`
+	IconURL        string   `json:"iconUrl"`
+	ImageURL       string   `json:"imageUrl"`
 	ThirdPartyURLs []string `json:"thirdPartyUrls"`
 }
 
 // NewUpdateNativeImageAppInstallRequest initialize UpdateNativeImageAppInstallRequest
 func NewUpdateNativeImageAppInstallRequest(id int, templateType int, title string, description string, appURL string, appStore string, rating float64, likes int, downloads int, button string, disabled bool, clickURL string, iconURL string, imageURL string, thirdPartyUrls []string) *UpdateNativeImageAppInstallRequest {
 	request := &UpdateNativeImageAppInstallRequest{
-		ID:               id,
-		TemplateType:     templateType,
-		Disabled:         disabled,
-		ClickURL:         clickURL,
-		Title:            title,
-		Description:      description,
-		Button:           button,
-		AppURL:           appURL,
-		AppStore:         appStore,
-		Rating:           rating,
-		Likes:            likes,
-		Downloads:        downloads,
-		IconURL:          iconURL,
-		ImageURL:         imageURL,
-		ThirdPartyURLs:   thirdPartyUrls,
+		ID:             id,
+		TemplateType:   templateType,
+		Disabled:       disabled,
+		ClickURL:       clickURL,
+		Title:          title,
+		Description:    description,
+		Button:         button,
+		AppURL:         appURL,
+		AppStore:       appStore,
+		Rating:         rating,
+		Likes:          likes,
+		Downloads:      downloads,
+		IconURL:        iconURL,
+		ImageURL:       imageURL,
+		ThirdPartyURLs: thirdPartyUrls,
 	}
 
 	return request
