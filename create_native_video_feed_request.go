@@ -9,19 +9,24 @@ import (
 	"net/http"
 )
 
-// UpdateVideoInlineRequest describe API request to iAGE platform to update inline video
-type UpdateVideoInlineRequest struct {
-	ID                      int      `json:"-"`
-	TemplateType            int      `json:"templateType"`
-	BannerType              int      `json:"bannerType"`
-	Name                    string   `json:"name"`
-	Disabled                bool     `json:"disabled"`
-	ClickURL                string   `json:"clickUrl"`
-	SkipOffset              int      `json:"skipoffset"`
-	VideoFirstURL           string   `json:"videoFirstUrl"`
-	VideoSecondURL          string   `json:"videoSecondUrl"`
+// CreateNativeVideoFeedRequest describe API request to iAGE platform to create new native video feed
+type CreateNativeVideoFeedRequest struct {
+	LineItemID     int      `json:"-"`
+	TemplateType   int      `json:"templateType"`
+	Disabled       bool     `json:"disabled"`
+	ClickURL       string   `json:"clickUrl"`
+	ThirdPartyURLs []string `json:"thirdPartyUrls"`
+	Title          string   `json:"title"`
+	Brand          string   `json:"brand"`
+	Description    string   `json:"description"`
+	Domain         string   `json:"domain"`
+	Button         string   `json:"button"`
+	VideoFirstURL  string   `json:"videoFirstUrl"`
+	VideoSecondURL string   `json:"videoSecondUrl"`
+	IconURL        string   `json:"iconUrl"`
+	ImageURL       string   `json:"imageUrl"`
+
 	VideoStartDelays        []int    `json:"videoStartDelays"`
-	ThirdPartyURLs          []string `json:"thirdPartyUrls"`
 	VastEventStart          []string `json:"vastEventStart"`
 	VastEventSkip           []string `json:"vastEventSkip"`
 	VastEventMidpoint       []string `json:"vastEventMidpoint"`
@@ -41,16 +46,20 @@ type UpdateVideoInlineRequest struct {
 	VastEventCreativeView   []string `json:"vastEventCreativeView"`
 }
 
-// NewUpdateVideoInlineRequest initialize UpdateVideoInlineRequest
-func NewUpdateVideoInlineRequest(id int, templateType int, name string, disabled bool, clickURL string, skipOffset int, videoFirstURL string, videoSecondURL string, videoStartDelay []int, thirdPartyUrls []string, events map[string][]string) *UpdateVideoInlineRequest {
-	request := &UpdateVideoInlineRequest{
-		ID:               id,
+// NewCreateNativeVideoFeedRequest initialize CreateNativeVideoFeedRequest
+func NewCreateNativeVideoFeedRequest(lineItemID int, templateType int, title string, brand string, description string, domain string, button string, disabled bool, clickURL string, iconURL string, imageURL string, videoFirstURL string, videoSecondURL string, videoStartDelay []int, thirdPartyUrls []string, events map[string][]string) *CreateNativeVideoFeedRequest {
+	request := &CreateNativeVideoFeedRequest{
+		LineItemID:       lineItemID,
 		TemplateType:     templateType,
-		BannerType:       BannerHTMLByURL,
-		Name:             name,
 		Disabled:         disabled,
 		ClickURL:         clickURL,
-		SkipOffset:       skipOffset,
+		Title:            title,
+		Brand:            brand,
+		Description:      description,
+		Domain:           domain,
+		Button:           button,
+		IconURL:          iconURL,
+		ImageURL:         imageURL,
 		VideoFirstURL:    videoFirstURL,
 		VideoSecondURL:   videoSecondURL,
 		VideoStartDelays: videoStartDelay,
@@ -113,17 +122,17 @@ func NewUpdateVideoInlineRequest(id int, templateType int, name string, disabled
 }
 
 // URL return API request entrypoint (URI)
-func (req *UpdateVideoInlineRequest) URL() string {
-	return fmt.Sprintf(`/v1/creatives/%v`, req.ID)
+func (req *CreateNativeVideoFeedRequest) URL() string {
+	return fmt.Sprintf(`/v1/lineitems/%v/creatives`, req.LineItemID)
 }
 
 // Method return API request http method
-func (req *UpdateVideoInlineRequest) Method() string {
+func (req *CreateNativeVideoFeedRequest) Method() string {
 	return http.MethodPost
 }
 
 // Body generate body content of API request
-func (req *UpdateVideoInlineRequest) Body() io.Reader {
+func (req *CreateNativeVideoFeedRequest) Body() io.Reader {
 	body := new(bytes.Buffer)
 	err := json.NewEncoder(body).Encode(req)
 	if err != nil {
