@@ -1,10 +1,12 @@
 package iagesdk
 
-type BannerByUrlCreative struct {
+// BannerByURLCreative describe iAGE`s banner created from URL
+type BannerByURLCreative struct {
 	Creative
+
 	BannerType     int       `json:"bannerType"`
 	Name           string    `json:"name"`
-	ClickUrl       string    `json:"clickUrl"`
+	ClickURL       string    `json:"clickUrl"`
 	LastDomain     string    `json:"lastDomain"`
 	ThirdPartyUrls []string  `json:"thirdPartyUrls"`
 	BannerFile     ImageFile `json:"bannerFile"`

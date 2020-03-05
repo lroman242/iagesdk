@@ -1,9 +1,8 @@
 package iagesdk
 
+// CreativeImage describe data structure used on image creatives
 type CreativeImage struct {
 	Creative
-
-	LineItemId int `json:"lineItemId"`
 
 	// Creative title
 	Title string `json:"title"` //max 40

@@ -17,7 +17,7 @@ type CreateBannerByURLRequest struct {
 	Name           string   `json:"name"`
 	Disabled       bool     `json:"disabled"`
 	ClickURL       string   `json:"clickUrl"`
-	BannerUrl      string   `json:"bannerUrl"`
+	BannerURL      string   `json:"bannerUrl"`
 	API            []int    `json:"api"`
 	ThirdPartyURLs []string `json:"thirdPartyUrls"`
 	CustomWidth    int      `json:"customWidth,omitempty"`  // required only for TemplateType = 221!
@@ -33,7 +33,7 @@ func NewCreateBannerByURLRequest(lineItemID int, templateType int, name string, 
 		Name:           name,
 		Disabled:       disabled,
 		ClickURL:       clickURL,
-		BannerUrl:      bannerURL,
+		BannerURL:      bannerURL,
 		API:            []int{MRAID2},
 		ThirdPartyURLs: thirdPartyUrls,
 		CustomWidth:    width,

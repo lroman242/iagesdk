@@ -1,9 +1,10 @@
 package iagesdk
 
+// NativeVideoFeedCreative describe iAGE`s data structure for video feed creative
 type NativeVideoFeedCreative struct {
 	Creative
 
-	ClickUrl   string `json:"clickUrl"`
+	ClickURL   string `json:"clickUrl"`
 	LastDomain string `json:"lastDomain"`
 
 	ThirdPartyUrls     []string            `json:"thirdPartyUrls"`

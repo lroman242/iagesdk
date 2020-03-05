@@ -1,11 +1,12 @@
 package iagesdk
 
+// VideoInlineCreative describe iAGE`s video inline video creative
 type VideoInlineCreative struct {
 	Creative
 
 	BannerType         int                 `json:"bannerType"`
 	Name               string              `json:"name"`
-	ClickUrl           string              `json:"clickUrl"`
+	ClickURL           string              `json:"clickUrl"`
 	LastDomain         string              `json:"lastDomain"`
 	ThirdPartyUrls     []string            `json:"thirdPartyUrls"`
 	VideoStartDelays   []int               `json:"videoStartDelays"`

@@ -16,7 +16,7 @@ type CreateVideoWrapperRequest struct {
 	BannerType              int      `json:"bannerType"`
 	Name                    string   `json:"name"`
 	Disabled                bool     `json:"disabled"`
-	BannerUrl               string   `json:"bannerUrl"`
+	BannerURL               string   `json:"bannerUrl"`
 	ThirdPartyURLs          []string `json:"thirdPartyUrls"`
 	VastEventStart          []string `json:"vastEventStart"`
 	VastEventSkip           []string `json:"vastEventSkip"`
@@ -45,7 +45,7 @@ func NewCreateVideoWrapperRequest(lineItemID int, templateType int, name string,
 		BannerType:     BannerHTMLByURL,
 		Name:           name,
 		Disabled:       disabled,
-		BannerUrl:      bannerURL,
+		BannerURL:      bannerURL,
 		ThirdPartyURLs: thirdPartyUrls,
 	}
 

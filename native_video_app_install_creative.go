@@ -1,9 +1,10 @@
 package iagesdk
 
+// NativeVideoAppInstallCreative describe iAGE`s video app install creative data structure
 type NativeVideoAppInstallCreative struct {
 	Creative
 
-	ClickUrl           string              `json:"clickUrl"`
+	ClickURL           string              `json:"clickUrl"`
 	LastDomain         string              `json:"lastDomain"`
 	ThirdPartyUrls     []string            `json:"thirdPartyUrls"`
 	SkipOffset         int                 `json:"skipoffset	"`
@@ -12,7 +13,7 @@ type NativeVideoAppInstallCreative struct {
 	Title              string              `json:"title"`
 	Description        string              `json:"description"`
 	Button             string              `json:"button"`
-	AppUrl             string              `json:"appUrl"`
+	AppURL             string              `json:"appUrl"`
 	AppStore           string              `json:"appStore"`
 	Brand              string              `json:"brand"`
 	Rating             float64             `json:"rating"`
