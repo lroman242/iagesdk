@@ -9,6 +9,9 @@ import (
 	"net/http"
 )
 
+const sandboxAPI = "https://demo.iae.one"
+const productionAPI = "https://api.dsp.iage.com"
+
 // Client manages communication with the iAGE API.
 type Client struct {
 	// Base URL for API requests.
@@ -19,21 +22,21 @@ type Client struct {
 }
 
 // Sandbox method set sandbox url to client
-func (c Client) Sandbox() Client {
-	c.baseURL = "https://demo.iae.one.com"
+func (c *Client) Sandbox() *Client {
+	c.baseURL = sandboxAPI
 
 	return c
 }
 
 // Production method set production url to client
-func (c Client) Production() Client {
-	c.baseURL = "https://api.dsp.iage.com"
+func (c *Client) Production() *Client {
+	c.baseURL = productionAPI
 
 	return c
 }
 
 // getUrl is a method to get base api url
-func (c Client) getURL() string {
+func (c *Client) getURL() string {
 	if c.baseURL == "" {
 		c.Production()
 	}
@@ -45,10 +48,9 @@ func (c Client) getURL() string {
 // response. It does not make much sense to call SendRequest without a prepared
 // interface instance.
 func (c Client) SendRequest(r Request, resp interface{}) error {
-
 	req, _ := http.NewRequest(
 		r.Method(),
-		fmt.Sprintf("%s/%s", c.getURL(), r.URL()),
+		fmt.Sprintf("%s%s", c.getURL(), r.URL()),
 		r.Body(),
 	)
 
@@ -60,6 +62,7 @@ func (c Client) SendRequest(r Request, resp interface{}) error {
 	if err != nil {
 		return err
 	}
+
 	defer func() {
 		err = response.Body.Close()
 		if err != nil {
@@ -68,8 +71,7 @@ func (c Client) SendRequest(r Request, resp interface{}) error {
 	}()
 
 	bodyContents, _ := ioutil.ReadAll(response.Body)
-
-	if response.StatusCode != 200 {
+	if response.StatusCode >= 400 {
 		errorMessage, err := c.parseErrorResponse(bodyContents)
 		if err != nil {
 			return err
@@ -78,7 +80,7 @@ func (c Client) SendRequest(r Request, resp interface{}) error {
 		return errors.New(errorMessage)
 	}
 
-	if err := json.Unmarshal(bodyContents, response); err != nil {
+	if err := json.Unmarshal(bodyContents, resp); err != nil {
 		return err
 	}
 
@@ -94,4 +96,19 @@ func (c Client) parseErrorResponse(content []byte) (string, error) {
 	}
 
 	return errorResponse.Error, nil
+}
+
+// NewClient - create new instance of iAGE`s HTTP API client
+func NewClient(APIToken string, sandbox bool) *Client {
+	c := &Client{
+		APIToken: APIToken,
+	}
+
+	if sandbox {
+		c.Sandbox()
+	} else {
+		c.Production()
+	}
+
+	return c
 }

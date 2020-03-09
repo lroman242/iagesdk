@@ -3,7 +3,6 @@ package iagesdk
 // Advertiser describe iAGE`s advertiser data structure
 type Advertiser struct {
 	ID        int    `json:"id"`
-	AgencyID  int    `json:"agencyId"`
 	FirstName string `json:"firstName"`
 	LastName  string `json:"lastName"`
 	Status    int    `json:"status"`
