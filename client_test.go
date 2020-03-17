@@ -9,7 +9,7 @@ import (
 )
 
 func TestClient_Sandbox(t *testing.T) {
-	c := Client{
+	c := client{
 		APIToken: "someToken",
 	}
 
@@ -21,7 +21,7 @@ func TestClient_Sandbox(t *testing.T) {
 }
 
 func TestClient_Production(t *testing.T) {
-	c := Client{
+	c := client{
 		APIToken: "someToken",
 	}
 
@@ -32,34 +32,9 @@ func TestClient_Production(t *testing.T) {
 	}
 }
 
-func TestNewClient_Sandbox(t *testing.T) {
-	token := "someToken1"
-	c := NewClient(token, true)
-
-	if c.APIToken != token {
-		t.Errorf("invalid token received. expected %v but got %v", token, c.APIToken)
-	}
-
-	if c.baseURL != sandboxAPI {
-		t.Error("invalid client endpoint. sandbox endpoint expected")
-	}
-}
-
-func TestNewClient_Production(t *testing.T) {
-	token := "someToken2"
-	c := NewClient(token, false)
-
-	if c.APIToken != token {
-		t.Errorf("invalid token received. expected %v but got %v", token, c.APIToken)
-	}
-
-	if c.baseURL != productionAPI {
-		t.Error("invalid client endpoint. production endpoint expected")
-	}
-}
 
 func TestClient_getURL_Sandbox(t *testing.T) {
-	c := Client{
+	c := client{
 		APIToken: "someToken",
 	}
 
@@ -71,7 +46,7 @@ func TestClient_getURL_Sandbox(t *testing.T) {
 }
 
 func TestClient_getURL_Production(t *testing.T) {
-	c := Client{
+	c := client{
 		APIToken: "someToken",
 	}
 
@@ -83,7 +58,7 @@ func TestClient_getURL_Production(t *testing.T) {
 }
 
 func TestClient_getURL_Empty(t *testing.T) {
-	c := Client{
+	c := client{
 		APIToken: "someToken",
 	}
 

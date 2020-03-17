@@ -12,8 +12,13 @@ import (
 const sandboxAPI = "https://demo.iae.one"
 const productionAPI = "https://api.dsp.iage.com"
 
-// Client manages communication with the iAGE API.
-type Client struct {
+// Client interface describe http client implementation
+type Client interface {
+	SendRequest(r Request, resp interface{}) error
+}
+
+// client manages communication with the iAGE API.
+type client struct {
 	// Base URL for API requests.
 	baseURL string
 
@@ -22,21 +27,17 @@ type Client struct {
 }
 
 // Sandbox method set sandbox url to client
-func (c *Client) Sandbox() *Client {
+func (c *client) Sandbox() {
 	c.baseURL = sandboxAPI
-
-	return c
 }
 
 // Production method set production url to client
-func (c *Client) Production() *Client {
+func (c *client) Production() {
 	c.baseURL = productionAPI
-
-	return c
 }
 
 // getUrl is a method to get base api url
-func (c *Client) getURL() string {
+func (c *client) getURL() string {
 	if c.baseURL == "" {
 		c.Production()
 	}
@@ -47,7 +48,7 @@ func (c *Client) getURL() string {
 // SendRequest sends an API request and populates the given interface with the parsed
 // response. It does not make much sense to call SendRequest without a prepared
 // interface instance.
-func (c Client) SendRequest(r Request, resp interface{}) error {
+func (c *client) SendRequest(r Request, resp interface{}) error {
 	req, _ := http.NewRequest(
 		r.Method(),
 		fmt.Sprintf("%s%s", c.getURL(), r.URL()),
@@ -88,7 +89,7 @@ func (c Client) SendRequest(r Request, resp interface{}) error {
 }
 
 // parseErrorResponse pares received response and retrieve error message from it
-func (c Client) parseErrorResponse(content []byte) (string, error) {
+func (c *client) parseErrorResponse(content []byte) (string, error) {
 	errorResponse := ErrorResponse{}
 
 	if err := json.Unmarshal(content, &errorResponse); err != nil {
@@ -99,8 +100,8 @@ func (c Client) parseErrorResponse(content []byte) (string, error) {
 }
 
 // NewClient - create new instance of iAGE`s HTTP API client
-func NewClient(APIToken string, sandbox bool) *Client {
-	c := &Client{
+func NewClient(APIToken string, sandbox bool) Client {
+	c := &client{
 		APIToken: APIToken,
 	}
 
